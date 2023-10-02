@@ -5,7 +5,7 @@ import { MugsComponent } from './mugs/mugs.component';
 import { HandBagsComponent } from './hand-bags/hand-bags.component';
 import { MainComponent } from './main/main.component';
 import { UsComponent } from './us/us.component';
-import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario/registrar-usuario.component';
 
 const routes: Routes = [
   {path: '',component:MainComponent},
