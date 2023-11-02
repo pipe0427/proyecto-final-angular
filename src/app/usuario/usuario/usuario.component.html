@@ -1,0 +1,35 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+    <div class="mb-3">
+      <label  class="form-label">Nombre</label>
+      <input type="text" class="form-control" placeholder="Nombre" FormControlName = "nombre">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" placeholder="Apellido" FormControlName = "apellido">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="email" class="form-control" placeholder="Email" FormControlName = "email">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Telefono</label>
+      <input type="text" class="form-control" placeholder="Telefono" FormControlName = "telefono">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Departamento</label>
+      <input type="text" class="form-control" placeholder="Departamento" FormControlName = "departamento">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Ciudad</label>
+      <input type="email" class="form-control" placeholder="Ciudad" FormControlName = "ciudad">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Contraseña</label>
+      <input type="password" class="form-control" placeholder="Contraseña" FormControlName = "contrasena">
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>

@@ -1,11 +1,12 @@
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/dashboard/main">
           <img src="https://cdn-icons-png.flaticon.com/128/7225/7225580.png" alt="Bootstrap" width="40" height="30">
           Home
         </a>
 
-      <button class="navbar-toggler border border-warning" routerLink="/dashboard/login" > <img src="https://cdn-icons-png.flaticon.com/128/7422/7422067.png" alt="" height="20"> </button>
+      <!--<button class="navbar-toggler border border-warning" href="/dashboard/usuario" > <img src="https://cdn-icons-png.flaticon.com/128/7422/7422067.png" alt="" height="20"> </button> -->
+      <a href="/dashboard/usuario" routerLinkActive="active" class="btn btn-border"><img src="https://cdn-icons-png.flaticon.com/128/7422/7422067.png" alt="" height="20"></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -14,21 +15,14 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
         </ul>
       </div>
+      <div class="collapse navbar-collapse  justify-content-end m-2" id="navbarSupportedContent">
+            <app-search-bar (searchText)="searchAction($event)"></app-search-bar>
+
+        </div>
     </div>
   </nav>

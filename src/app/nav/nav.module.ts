@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
+import { SearchModule } from '../search/search.module';
+import { UsuarioModule } from '../usuario/usuario.module';
 
 
 
@@ -9,7 +11,9 @@ import { NavComponent } from './nav/nav.component';
     NavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SearchModule,
+    UsuarioModule
   ],exports:[
     NavComponent
   ]
