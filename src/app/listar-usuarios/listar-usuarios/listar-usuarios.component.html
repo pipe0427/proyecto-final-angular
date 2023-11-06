@@ -1,0 +1,26 @@
+<div class="container p-3">
+    <table class="table">
+        <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Departamento</th>
+            <th>Ciudad</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellido}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.departamento}}</td>
+                <td>{{usuario.ciudad}}</td>
+                <td><a routerLink="/dashboard/editar" routerLinkActive="active" class="btn btn-info"><i class="fas fa-user-edit">Editar</i></a></td>
+                <td><a routerLink="/dashboard/listar" (click)="onClickDelete(usuario)" routerLinkActive="active" class="btn btn-danger"><i class="fas fa-user-edit">Eliminar</i></a></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

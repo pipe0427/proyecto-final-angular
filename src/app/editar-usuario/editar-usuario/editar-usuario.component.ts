@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { empty } from 'rxjs';
-import { Usuario } from 'src/app/model/usuario';
-import { ProductService } from 'src/app/services/product.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
 
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css']
+  selector: 'app-editar-usuario',
+  templateUrl: './editar-usuario.component.html',
+  styleUrls: ['./editar-usuario.component.css']
 })
-export class UsuarioComponent {
+export class EditarUsuarioComponent {
   formulario!: FormGroup;
 
   constructor(
@@ -39,8 +36,10 @@ export class UsuarioComponent {
     })
   }
 
- onRegister(){
-  console.log(this.formulario)
+ onEdit(){
+  const aux = null
+
+
    if(this.formulario.valid){
      const response = this.usuarioService.addUsuario(this.formulario.value)
 

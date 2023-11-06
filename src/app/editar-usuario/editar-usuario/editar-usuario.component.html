@@ -1,0 +1,56 @@
+<div class="container">
+    <form (ngSubmit)="onEdit()" [formGroup]="formulario">
+      <div class="mb-3">
+        <label  class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName = "nombre">
+        <div *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El nombre es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" placeholder="Apellido" formControlName = "apellido">
+        <div *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El apellido es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-control" placeholder="Email" formControlName = "email">
+        <div *ngIf="formulario.get('email')?.touched && formulario.get('email')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El email es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Telefono</label>
+        <input type="number" class="form-control" placeholder="Telefono" formControlName = "telefono">
+        <div *ngIf="formulario.get('telefono')?.touched && formulario.get('telefono')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El telefono es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Departamento</label>
+        <input type="text" class="form-control" placeholder="Departamento" formControlName = "departamento">
+        <div *ngIf="formulario.get('departamento')?.touched && formulario.get('departamento')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El departamento es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Ciudad</label>
+        <input type="text" class="form-control" placeholder="Ciudad" formControlName = "ciudad">
+        <div *ngIf="formulario.get('ciudad')?.touched && formulario.get('ciudad')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El ciudad es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Contraseña</label>
+        <input type="password" class="form-control" placeholder="Contraseña" formControlName = "contrasena">
+        <div *ngIf="formulario.get('contrasena')?.touched && formulario.get('contrasena')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+          El contrasena es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Agregar</button>
+      </div>
+    </form>
+  </div>
