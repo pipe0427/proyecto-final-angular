@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EditarUsuarioRoutingModule } from './editar-usuario-routing.module';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarUsuariosModule } from '../listar-usuarios/listar-usuarios.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     EditarUsuarioRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ListarUsuariosModule
   ],exports:[
     EditarUsuarioComponent
   ]

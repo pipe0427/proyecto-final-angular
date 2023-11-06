@@ -16,7 +16,8 @@ const routes: Routes = [
       {path: 'handBags', loadChildren:() => import('./hand-bags/hand-bags.module').then(m=>m.HandBagsModule)},
       {path: 'us',loadChildren:() => import('./us/us.module').then(m=>m.UsModule)},
       {path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule)},
-      {path: 'listar', loadChildren: () => import('./listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosModule)}
+      {path: 'listar', loadChildren: () => import('./listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosModule)},
+      {path: 'editar', loadChildren: () => import('./editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioModule)}
     ]},
 ];
 

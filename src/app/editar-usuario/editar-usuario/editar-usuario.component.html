@@ -1,4 +1,5 @@
 <div class="container">
+  <app-listar-usuarios (usuario)="llenarCamposUsuario($event)"></app-listar-usuarios>
     <form (ngSubmit)="onEdit()" [formGroup]="formulario">
       <div class="mb-3">
         <label  class="form-label">Nombre</label>

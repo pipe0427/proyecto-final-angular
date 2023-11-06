@@ -12,6 +12,8 @@ import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.compo
   imports: [
     CommonModule,
     ListarUsuariosRoutingModule
+  ],exports:[
+    ListarUsuariosComponent
   ]
 })
 export class ListarUsuariosModule { }

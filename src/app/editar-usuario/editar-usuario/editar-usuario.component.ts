@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
 
@@ -11,6 +12,7 @@ import { SwalUtils } from 'src/app/util/swal-utils';
 })
 export class EditarUsuarioComponent {
   formulario!: FormGroup;
+  @Input() usuario!:Usuario;
 
   constructor(
     private fb: FormBuilder,
@@ -38,8 +40,6 @@ export class EditarUsuarioComponent {
 
  onEdit(){
   const aux = null
-
-
    if(this.formulario.valid){
      const response = this.usuarioService.addUsuario(this.formulario.value)
 
@@ -54,5 +54,9 @@ export class EditarUsuarioComponent {
     SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
    }
 
+ }
+ 
+ llenarCamposUsuario(usuario:Usuario){
+  this.formulario.patchValue({ nombre: usuario.nombre, apellido: usuario.apellido});
  }
 }

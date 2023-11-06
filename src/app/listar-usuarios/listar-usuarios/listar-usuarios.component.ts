@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
@@ -10,6 +10,8 @@ import { SwalUtils } from 'src/app/util/swal-utils';
 })
 export class ListarUsuariosComponent implements OnInit{
   usuarios!: Usuario[];
+  @Output() usuario = new EventEmitter<Usuario>(); 
+  respuesta!:Usuario;
 
   constructor(private usuarioService: UsuarioService){
 
@@ -34,5 +36,10 @@ export class ListarUsuariosComponent implements OnInit{
     }else{
       SwalUtils.customMessageError('Ops! Hubo un error', 'No se elimino')  
     }
+  }
+
+  enviarUsuario(usuario:Usuario){
+    this.respuesta = usuario
+    this.usuario.emit(this.respuesta)
   }
 }
