@@ -1,34 +1,48 @@
+<img src="https://cdn-icons-png.flaticon.com/512/8653/8653323.png" class="rounded mx-auto d-block" alt="" height="200">
 <div class="container">
-    <form (ngSubmit)="onLogin()" [formGroup] = 'loginForm'>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="text" 
-            formControlName="username"
-            class="form-control" id="exampleFormControlInput1">
-            <div *ngIf="loginForm.get('username')?.touched
-                                    && loginForm.get('username')?.errors?.['required']" class="alert alert-danger mt-2"
-                role="alert">
-                El usuario es requerido
+    
+    <div class="container border border-warning rounded-4 " >
+        <form (ngSubmit)="onLogin()" [formGroup] = 'loginForm'>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="text" 
+                formControlName = "email"
+                class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <div *ngIf="loginForm.get('email')?.touched
+                                        && loginForm.get('email')?.errors?.['required']" class="alert alert-danger mt-2"
+                    role="alert">
+                    El eamil es requerido
+                </div>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input type="password" 
-            formControlName="password"
-            class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            <div *ngIf="loginForm.get('password')?.touched
-                                                && loginForm.get('password')?.errors?.['required']"
-                class="alert alert-danger mt-2" role="alert">
-                La contraseña es requerida
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" 
+                formControlName="password"
+                class="form-control" id="exampleFormControlInput1" placeholder="*******">
+                <div *ngIf="loginForm.get('password')?.touched
+                                                    && loginForm.get('password')?.errors?.['required']"
+                    class="alert alert-danger mt-2" role="alert">
+                    La contraseña es requerida
+                </div>
+                <div>
+                    <a href=""></a>
+                </div>
+                <div *ngIf="loginForm.get('password')?.touched
+                                                                && loginForm.get('password')?.errors?.['minlength']"
+                    class="alert alert-danger mt-2" role="alert">
+                    Minimo 6 caracteres para el password
+                </div>
             </div>
-            <div *ngIf="loginForm.get('password')?.touched
-                                                            && loginForm.get('password')?.errors?.['minlength']"
-                class="alert alert-danger mt-2" role="alert">
-                Minimo 6 caracteres para el password
+            <div class=" d-grid gap-2 d-md-flex justify-content-md-center">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
             </div>
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Ingresar</button>
-        </div>
-    </form>
+            <br/>
+            <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-center">
+                <a routerLinkActive="active" (click)="loginWithGoogle()" class="btn border border-black"><img src="https://cdn-icons-png.flaticon.com/512/2875/2875404.png" class="m-1" alt="" height="20">Ingresar con Google</a>
+            </div>
+            <div class="m-5 mb-4 d-grid gap-2 d-md-flex justify-content-md-center">
+                No tiene una cuenta?.<a href="usuario" class="text-primary">Crea una cuenta</a>
+            </div>
+        </form>
+    </div>
 </div>

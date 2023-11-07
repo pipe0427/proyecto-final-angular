@@ -9,10 +9,9 @@ import { SwalUtils } from 'src/app/util/swal-utils';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
   loginForm!: FormGroup
-  login: Login = new Login()
   
 
   constructor(private fb: FormBuilder,
@@ -28,37 +27,43 @@ export class LoginComponent implements OnInit{
 
   iniciarFormulario(): FormGroup {
     return this.fb.group({
-      username: ['electivaeam', [Validators.required]],
-      password: ['electiva2023', [Validators.required,Validators.minLength(5)]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required,Validators.minLength(5)]]
     })
 
   }
 
+
   onLogin() {
-    if (this.loginForm.valid) {
-      this.extractData()
-      this.loginService.login(this.login).subscribe((res) => {
-        console.log(res);
-        this.router.navigateByUrl('dashboard')
-        SwalUtils.customMessageOk('Bienvenido','login Correcto')        
-      }, (error) => {
-        this.router.navigateByUrl('login')
-        console.log('1')
-        SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
-        console.log(error);
-        
-      })      
-    } else {
+    console.log(this.loginForm.value)
+   if (this.loginForm.valid) {
+     this.loginService.login(this.loginForm.get("email")?.value,this.loginForm.get("password")?.value).then(response => {
+      console.log(response)
+      this.router.navigateByUrl('dashboard')
+      SwalUtils.customMessageOk('Bienvenido','login Correcto')   
+     }).catch(error => {
       this.router.navigateByUrl('login')
       SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
-    }
-    console.log(this.loginForm);
+      console.log(error);
+     })   
+   } else {
+      this.router.navigateByUrl('login')
+      SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
+   }
+   console.log(this.loginForm);
 
   }
 
-  extractData() {
-    this.login.username = this.loginForm.get("username")?.value
-    this.login.password = this.loginForm.value.password
+  loginWithGoogle(){
+    this.loginService.loginWithGoogle().then( response => {
+      console.log(response)
+      this.router.navigateByUrl('dashboard')
+      SwalUtils.customMessageOk('Bienvenido','login Correcto')  
+    }).catch(error => {
+      this.router.navigateByUrl('login')
+      SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
+      console.log(error);
+     })
   }
 
 }

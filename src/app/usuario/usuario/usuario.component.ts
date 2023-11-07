@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { empty } from 'rxjs';
+import { LoginService } from 'src/app/login/login.service';
 import { Usuario } from 'src/app/model/usuario';
 import { ProductService } from 'src/app/services/product.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -18,7 +19,8 @@ export class UsuarioComponent {
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private router:Router
+    private router:Router,
+    private loginService:LoginService
   ){
   }
 
@@ -42,18 +44,45 @@ export class UsuarioComponent {
  onRegister(){
   console.log(this.formulario)
    if(this.formulario.valid){
-     const response = this.usuarioService.addUsuario(this.formulario.value)
+     this.usuarioService.addUsuario(this.formulario.value).then(response => {
+      if(response != null){
+        this.loginService.register(this.formulario.get("email")?.value,this.formulario.get("contrasena")?.value).then(response => {
+          console.log(response)
+          if(response != null){
+            this.router.navigateByUrl('dashboard/main')
+            SwalUtils.customMessageOk('Agregado','Se agrego correctamente el usuario')
+          }else{
+            SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego')  
+          }
+         }).catch(error => console.log(error))
+        this.router.navigateByUrl('dashboard/main')
+        SwalUtils.customMessageOk('Agregado','Se agrego correctamente el usuario')
+      }else{
+        SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego')  
+      }
+     }).catch(error => {
+      console.log(error)
+      SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
+     })
 
-     if(response != null){
-       this.router.navigateByUrl('dashboard/main')
-       SwalUtils.customMessageOk('Agregado','Se agrego correctamente el usuario')
-     }else{
-       this.router.navigateByUrl('dashboard')
-       SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego')  
-     }
+
+
+     
+
+     
    }else{
     SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
    }
 
+ }
+
+ logout(){
+  this.loginService.logout().then(resp => {
+    this.router.navigateByUrl('login')
+    SwalUtils.customMessageOk('Logout','Retornara a la pagina de login')
+  }).catch( error => {
+    console.log(error)
+    SwalUtils.customMessageError('Ops! Hubo un error', 'No se pudo cerrar la sesión') 
+  })
  }
 }
