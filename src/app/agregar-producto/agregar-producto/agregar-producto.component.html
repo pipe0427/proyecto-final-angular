@@ -1,0 +1,52 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+            <div class="mb-3">
+                <label  class="form-label">Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre" formControlName = "name">
+                <div *ngIf="formulario.get('name')?.touched && formulario.get('name')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                El nombre es requerido
+                </div>
+            </div>
+            <div class="mb-3" >
+                <label class="form-label">Tipo</label>
+                <!-- <input type="" class="form-control" placeholder="tipo" formControlName = "type">-->
+                <select formControlName = "type" >
+                    <option *ngFor="let category of categorias" >{{category}}</option>
+                </select>
+                <div *ngIf="formulario.get('type')?.touched && formulario.get('type')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                El tipo es requerido
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Precio</label>
+                <input type="number" class="form-control" placeholder="precio" formControlName = "price">
+                <div *ngIf="formulario.get('price')?.touched && formulario.get('price')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                El precio es requerido
+                </div>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Stock</label>
+                <input type="number" class="form-control" placeholder="Stock" formControlName = "stock">
+                <div *ngIf="formulario.get('stock')?.touched && formulario.get('stock')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                El stock es requerido
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" class="form-control" placeholder="descripción" formControlName = "descripcion">
+                <div *ngIf="formulario.get('descripcion')?.touched && formulario.get('descripcion')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                Ladescripción es requerida
+                </div>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Imagen</label>
+                <input type="file" class="form-control" placeholder="Imagen" accept=".png, .jpg, jpeg" formControlName = "img" (change)="uploadImage($event)">
+                <div *ngIf="formulario.get('img')?.touched && formulario.get('img')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+                La imagen es requerida
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary" type="submit">Agregar</button>
+            </div>
+    </form>
+</div>

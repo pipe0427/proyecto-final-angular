@@ -4,4 +4,6 @@ export class Product{
     type:string = ""
     price:string = ""
     stock:number= 0
+    description:string =""
+    img:Object = ""
 }

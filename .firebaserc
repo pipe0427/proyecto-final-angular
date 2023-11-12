@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "market-50b8a": {
-      "hosting": {
-        "proyecto": [
-          "market-50b8a"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "market-50b8a"
   }

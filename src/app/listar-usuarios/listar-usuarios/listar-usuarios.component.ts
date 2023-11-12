@@ -10,8 +10,8 @@ import { SwalUtils } from 'src/app/util/swal-utils';
 })
 export class ListarUsuariosComponent implements OnInit{
   usuarios!: Usuario[];
-  @Output() usuario = new EventEmitter<Usuario>(); 
-  respuesta!:Usuario;
+  @Output() idUsuario = new EventEmitter<any>(); 
+  respuesta!:any;
 
   constructor(private usuarioService: UsuarioService){
 
@@ -38,8 +38,11 @@ export class ListarUsuariosComponent implements OnInit{
     }
   }
 
-  enviarUsuario(usuario:Usuario){
+  enviarUsuario(usuario:any){
     this.respuesta = usuario
-    this.usuario.emit(this.respuesta)
+    console.log(this.respuesta);
+  }
+
+  editarUsuario(){
   }
 }

@@ -7,8 +7,9 @@ import { UsuarioComponent } from './usuario/usuario/usuario.component';
 
 const routes: Routes = [  
   {path: '',redirectTo:'/login',pathMatch:'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component:DashboardComponent,...canActivate(() => redirectUnauthorizedTo(['/usuario'])),
+  {path: 'login', component: LoginComponent,},
+  {path:'usuario', component: UsuarioComponent},
+  {path: 'dashboard', component:DashboardComponent,...canActivate(() => redirectUnauthorizedTo(['/login'])),
     children:[
       {path:'',redirectTo:'/dashboard/main', pathMatch: 'full'},
       {path:'usuario', loadChildren:() => import('./usuario/usuario.module').then(m=>m.UsuarioModule)},
@@ -19,9 +20,9 @@ const routes: Routes = [
       {path: 'us',loadChildren:() => import('./us/us.module').then(m=>m.UsModule)},
       {path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule)},
       {path: 'listar', loadChildren: () => import('./listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosModule)},
-      {path: 'editar', loadChildren: () => import('./editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioModule)}
-    ]},
-    {path:'usuario', component: UsuarioComponent}
+      {path: 'editar', loadChildren: () => import('./editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioModule)},
+      {path: 'agregar-producto', loadChildren: () => import('./agregar-producto/agregar-producto.module').then(m => m.AgregarProductoModule)}
+    ]}
 ];
 
 @NgModule({

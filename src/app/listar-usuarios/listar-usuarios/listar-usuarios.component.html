@@ -1,26 +1,45 @@
 <div class="container p-3">
-    <table class="table">
-        <thead>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Departamento</th>
-            <th>Ciudad</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let usuario of usuarios">
-                <td>{{usuario.nombre}}</td>
-                <td>{{usuario.apellido}}</td>
-                <td>{{usuario.email}}</td>
-                <td>{{usuario.telefono}}</td>
-                <td>{{usuario.departamento}}</td>
-                <td>{{usuario.ciudad}}</td>
-                <td><a routerLink="/dashboard/editar" (click)="enviarUsuario(usuario)" routerLinkActive="active" class="btn btn-info"><i class="fas fa-user-edit">Editar</i></a></td>
-                <td><a routerLink="/dashboard/listar" (click)="onClickDelete(usuario)" routerLinkActive="active" class="btn btn-danger"><i class="fas fa-user-edit">Eliminar</i></a></td>
-            </tr>
-        </tbody>
-
-    </table>
-
+  <table class="table">
+      <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Departamento</th>
+        <th>Ciudad</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.apellido}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.telefono}}</td>
+          <td>{{usuario.departamento}}</td>
+          <td>{{usuario.ciudad}}</td>
+          <td><button type="button" class="btn btn-primary" (click)="enviarUsuario(usuario.id)" data-bs-toggle="modal"  data-bs-target="#exampleModal">Editar</button></td>
+          <td><a routerLink="/dashboard/listar" (click)="onClickDelete(usuario)" routerLinkActive="active" class="btn btn-danger"><i class="fas fa-user-edit">Eliminar</i></a></td>
+        </tr>
+      </tbody>
+  </table>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-editar-usuario [idUsuario]="respuesta" ></app-editar-usuario>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editarUsuario()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -15,8 +15,7 @@ import { ListarUsuariosModule } from '../listar-usuarios/listar-usuarios.module'
     CommonModule,
     EditarUsuarioRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    ListarUsuariosModule
+    ReactiveFormsModule
   ],exports:[
     EditarUsuarioComponent
   ]

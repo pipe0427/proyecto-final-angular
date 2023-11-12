@@ -7,5 +7,6 @@ export class Usuario{
     departamento:String = ""
     ciudad:String = ""
     contrasena:String = ""
+    role: string =""
     
 }

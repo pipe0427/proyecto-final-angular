@@ -1,5 +1,4 @@
 <div class="container">
-  <app-listar-usuarios (usuario)="llenarCamposUsuario($event)"></app-listar-usuarios>
     <form (ngSubmit)="onEdit()" [formGroup]="formulario">
       <div class="mb-3">
         <label  class="form-label">Nombre</label>
@@ -44,14 +43,7 @@
         </div>
       </div>
       <div class="mb-3">
-        <label  class="form-label">Contraseña</label>
-        <input type="password" class="form-control" placeholder="Contraseña" formControlName = "contrasena">
-        <div *ngIf="formulario.get('contrasena')?.touched && formulario.get('contrasena')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
-          El contrasena es requerido
-        </div>
-      </div>
-      <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Agregar</button>
+        <button class="btn btn-primary" type="button" (click)="llenarCamposUsuario()">Cargar usuario</button>
       </div>
     </form>
   </div>

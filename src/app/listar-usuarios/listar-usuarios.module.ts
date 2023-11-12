@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ListarUsuariosRoutingModule } from './listar-usuarios-routing.module';
 import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.component';
+import { EditarUsuarioModule } from '../editar-usuario/editar-usuario.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.compo
   ],
   imports: [
     CommonModule,
-    ListarUsuariosRoutingModule
+    ListarUsuariosRoutingModule,
+    EditarUsuarioModule
   ],exports:[
     ListarUsuariosComponent
   ]

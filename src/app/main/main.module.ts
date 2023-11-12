@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { Router } from '@angular/router';
 import { MainRoutingModule } from './main-routing.module';
-import { MainService } from './main.service';
+import { ProductComponent } from './product/product.component';
 
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,

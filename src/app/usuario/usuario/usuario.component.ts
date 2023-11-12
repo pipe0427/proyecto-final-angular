@@ -64,15 +64,9 @@ export class UsuarioComponent {
       console.log(error)
       SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
      })
-
-
-
-     
-
-     
-   }else{
-    SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
-   }
+    }else{
+      SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego') 
+    }
 
  }
 
