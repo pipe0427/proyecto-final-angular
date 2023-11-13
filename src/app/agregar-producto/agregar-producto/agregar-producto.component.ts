@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
 import { Storage, ref, uploadBytes } from '@angular/fire/storage';
 import { Contants } from 'src/app/constant/constants';
+import { Product } from 'src/app/model/product';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -14,7 +15,6 @@ import { Contants } from 'src/app/constant/constants';
 export class AgregarProductoComponent {
 
   formulario!: FormGroup
-  imgId:string = ""
   categorias = [Contants.CATEGORIA_CAMISETA,Contants.CATEGORIA_HANG_BAGS,Contants.CATEGORIA_LLAVEROS,Contants.CATEGORIA_MUG]
 
   constructor(
@@ -42,6 +42,7 @@ export class AgregarProductoComponent {
 
   onSubmit(){
     console.log(this.formulario)
+    this.formulario.patchValue({img: "a"})
      if(this.formulario.valid){
        this.productService.addProduct(this.formulario.value).then(response => {
         if(response != null){
@@ -61,7 +62,6 @@ export class AgregarProductoComponent {
 
     const imgRef = ref(this.storage,`imagenes/${file.name}`)
     
-
     uploadBytes(imgRef,file)
     .then(
       response => console.log(response)

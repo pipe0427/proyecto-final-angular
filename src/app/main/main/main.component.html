@@ -4,7 +4,7 @@
       <div class="card card-1 shadow">
         <a routerLink="../main/product/{{product.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
           class="text-decoration-none">
-          <img src="{{ product.img}}" class="custom-img" alt="{{product.name}}" height="310" width="310">
+          <img [src]="mostrarImagenes(product)" class="custom-img" alt="{{product.name}}" height="310" width="310">
           <div class="card-body p-1">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">{{product.description}}</p>
