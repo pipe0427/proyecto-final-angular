@@ -6,7 +6,6 @@ import { SwalUtils } from 'src/app/util/swal-utils';
 import { Storage, getDownloadURL, listAll, ref, uploadBytes } from '@angular/fire/storage';
 import { Contants } from 'src/app/constant/constants';
 import { Product } from 'src/app/model/product';
-import { Img } from 'src/app/model/img';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -17,6 +16,7 @@ export class AgregarProductoComponent {
 
   formulario!: FormGroup
   categorias = [Contants.CATEGORIA_CAMISETA,Contants.CATEGORIA_HANG_BAGS,Contants.CATEGORIA_LLAVEROS,Contants.CATEGORIA_MUG]
+  file!:any
 
   constructor(
     private fb: FormBuilder,
@@ -43,47 +43,33 @@ export class AgregarProductoComponent {
 
   onSubmit(){
     console.log(this.formulario)
-     if(this.formulario.valid){
-       this.productService.addProduct(this.formulario.value).then(response => {
-        if(response != null){
-          console.log(response)
-          
-          this.router.navigateByUrl('dashboard/main')
-          SwalUtils.customMessageOk('Agregado','Se agrego correctamente el producto')
-        }else{
-          SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego')  
-        }
-        })
-      }
+    
+    const imgRef = ref(this.storage,`imagenes/${this.file.name}`)
+          uploadBytes(imgRef,this.file).then(
+            response => {
+            getDownloadURL(response.ref).then(
+              url => {
+                this.formulario.value.img = url
+                if(this.formulario.valid){
+                  this.productService.addProduct(this.formulario.value).then(response => {
+                   if(response != null){
+                     console.log(response)
+                     
+                     
+                     this.router.navigateByUrl('dashboard/main')
+                     SwalUtils.customMessageOk('Agregado','Se agrego correctamente el producto')
+                   }else{
+                     SwalUtils.customMessageError('Ops! Hubo un error', 'No se agrego')  
+                   }
+                   })
+                 }
+              }
+            )
+            }
+          )
   }
   uploadImage($event:any){
-    const file = $event.target.files[0]
-    console.log(file)
-
-    const imgRef = ref(this.storage,`imagenes/${file.name}`)
+    this.file = $event.target.files[0]
     
-    uploadBytes(imgRef,file)
-    .then(
-      response => console.log(response)
-    ).catch(
-      error => {
-      console.log(error)
-      SwalUtils.customMessageError('Ops! Hubo un error con la imagen', 'No se pudo subir la imagen')  
-    }
-    )
-  }
-  iniciarImagenes(){
-    const imgRef = ref(this.storage,'imagenes')
-
-    listAll(imgRef)
-    .then(async response =>{
-      console.log(response)
-      for (let item of response.items) {
-        const url = await getDownloadURL(item)
-      }
-    })
-    .catch(error => {
-      console.log(error)
-    })
   }
 }

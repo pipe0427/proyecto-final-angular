@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
       console.log(productos)
       this.products = productos;
       for (let i = 0; i < this.imagenes.length; i++) {
-          this.products[i].img = this.imagenes[i]
+          this.products[i].img = this.imagenes[i].toString()
       }
       console.log(this.products);
        

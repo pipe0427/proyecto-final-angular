@@ -5,5 +5,5 @@ export class Product{
     price:string = ""
     stock:number= 0
     description:string =""
-    img:Object = ""
+    img:string = ""
 }
