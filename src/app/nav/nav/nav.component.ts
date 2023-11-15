@@ -11,8 +11,10 @@ export class NavComponent {
 
   }
 
-  searchAction(searchText:any) {
-    console.log(searchText);
-    this.router.navigate(["/dashboard/search/searching", searchText]);
+  ngOnInit(){
   }
+
+  
+
+  
 }

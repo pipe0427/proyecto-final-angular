@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
-import { Storage, ref, uploadBytes } from '@angular/fire/storage';
+import { Storage, getDownloadURL, listAll, ref, uploadBytes } from '@angular/fire/storage';
 import { Contants } from 'src/app/constant/constants';
 import { Product } from 'src/app/model/product';
+import { Img } from 'src/app/model/img';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -42,12 +43,11 @@ export class AgregarProductoComponent {
 
   onSubmit(){
     console.log(this.formulario)
-    this.formulario.patchValue({img: "a"})
      if(this.formulario.valid){
        this.productService.addProduct(this.formulario.value).then(response => {
         if(response != null){
           console.log(response)
-          console.log("ultimo");
+          
           this.router.navigateByUrl('dashboard/main')
           SwalUtils.customMessageOk('Agregado','Se agrego correctamente el producto')
         }else{
@@ -71,5 +71,19 @@ export class AgregarProductoComponent {
       SwalUtils.customMessageError('Ops! Hubo un error con la imagen', 'No se pudo subir la imagen')  
     }
     )
+  }
+  iniciarImagenes(){
+    const imgRef = ref(this.storage,'imagenes')
+
+    listAll(imgRef)
+    .then(async response =>{
+      console.log(response)
+      for (let item of response.items) {
+        const url = await getDownloadURL(item)
+      }
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 }

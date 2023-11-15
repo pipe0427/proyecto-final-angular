@@ -1,1 +1,30 @@
-<p>product works!</p>
+<!-- <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-sm-6 col-md-6 d-flex align-items-stretch justify-content-center" >
+        <div class="card card-1 shadow">
+          <a routerLink="../main/product/{{mostrarProducto().id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+            class="text-decoration-none">
+            <img [src]="" class="custom-img" alt="{{mostrarProducto().name}}" height="310" width="310">
+            <div class="card-body p-1">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <p class="card-text"></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{mostrarProducto().img}}" alt="Imagen" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <h1>{{mostrarProducto().name}}</h1>
+        <p>{{mostrarProducto().description}}</p>
+        <p>{{mostrarProducto().price}}</p>
+        <a href="#" class="btn btn-primary">Contactar</a>
+      </div>
+    </div>
+  </div>

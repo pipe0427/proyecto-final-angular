@@ -8,7 +8,7 @@ import { UsuarioComponent } from './usuario/usuario/usuario.component';
 const routes: Routes = [  
   {path: '',redirectTo:'/login',pathMatch:'full'},
   {path: 'login', component: LoginComponent,},
-  {path:'usuario', component: UsuarioComponent},
+  {path:'usuario', component: UsuarioComponent,canDeactivate: []},
   {path: 'dashboard', component:DashboardComponent,...canActivate(() => redirectUnauthorizedTo(['/login'])),
     children:[
       {path:'',redirectTo:'/dashboard/main', pathMatch: 'full'},

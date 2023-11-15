@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/model/login';
 import { LoginService } from '../login.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
 @Component({
@@ -16,12 +15,12 @@ export class LoginComponent{
 
   constructor(private fb: FormBuilder,
     private router:Router,
-    private loginService: LoginService) {
+    private loginService: LoginService
+    ) {
 
   }
 
   ngOnInit() {
-    sessionStorage.clear()
     this.loginForm = this.iniciarFormulario()
   }
 

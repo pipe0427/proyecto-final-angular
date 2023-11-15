@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Storage,getDownloadURL,listAll,ref } from '@angular/fire/storage';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   products!:Product[]
   imagenes:String[]
 
@@ -19,14 +19,19 @@ export class MainComponent {
     this.imagenes = []
   }
   ngOnInit(){
-    this.listarProductos()
     this.iniciarImagenes()
+    this.listarProductos() 
   }
 
   listarProductos(){
     this.productService.getProducts().subscribe(productos =>{
       console.log(productos)
       this.products = productos;
+      for (let i = 0; i < this.imagenes.length; i++) {
+          this.products[i].img = this.imagenes[i]
+      }
+      console.log(this.products);
+       
     })
   }
 
@@ -44,25 +49,6 @@ export class MainComponent {
     .catch(error => {
       console.log(error)
     })
-    
   }
-
-  mostrarImagenes(product:Product):any{
-    
-    const palabra = product.img.toString().toLowerCase();
-    for (let i = 0; i < this.imagenes.length; i++) {
-      console.log(palabra);
-      
-      if((palabra.toLowerCase().includes(this.imagenes[i].toLowerCase())) == true){
-      const element = this.imagenes[i];
-      console.log(element);
-      return element
-      }
-      
-    }
-  }
-
-  
-  
   
 }

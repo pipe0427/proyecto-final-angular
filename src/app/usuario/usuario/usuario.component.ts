@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { empty } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
-import { Usuario } from 'src/app/model/usuario';
 import { ProductService } from 'src/app/services/product.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
@@ -36,8 +35,8 @@ export class UsuarioComponent {
         telefono: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
         departamento: ['', [Validators.required,Validators.minLength(3)]],
         ciudad: ['', [Validators.required,Validators.minLength(3)]],
-        contrasena: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(6)]]
-      
+        contrasena: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(6)]],
+        role: ['user',Validators.required]
     })
   }
 

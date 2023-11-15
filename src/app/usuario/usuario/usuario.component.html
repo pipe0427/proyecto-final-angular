@@ -49,6 +49,12 @@
         El contrasena es requerido
       </div>
     </div>
+    <div class="mb-3" style="display: none">
+      <input type="text" class="form-control" placeholder="descripción" formControlName = "role" value ="user">
+      <div *ngIf="formulario.get('role')?.touched && formulario.get('role')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
+      El rol es requerido
+      </div>
+  </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button class="btn btn-primary" type="submit">Agregar</button>
       <button class="btn btn-danger" (click)="logout()" type="button">Logout</button>
