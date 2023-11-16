@@ -8,11 +8,5 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
 
   ngOnInit(){
-    this.validarAdmin()
-  }
-  validarAdmin(){
-    var user = sessionStorage.getItem("user")
-    console.log(user);
-    
   }
 }

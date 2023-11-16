@@ -1,39 +1,17 @@
-<div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://i0.wp.com/tutiendashoka.com/wp-content/uploads/2022/04/camisetas-de-one-piece-luffy.jpg?fit=1200%2C1200&ssl=1" height="310" alt="">
-            <div class="card-body">
-              <p class="card-text">Good gery shirt</p>
-              <div class="d-flex justify-content-between align-items-center">
-                </div>
-                  <small class="text-muted">price</small>
-                </div>
+<div class="container">
+  <div class="row row-cols-2 row-cols-md-6 g-4">
+    <div class="col" *ngFor="let product of products" >
+      <div class="card card-1 shadow h-100" height="310" width="310">
+        <a routerLink="../main/product/{{product.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+          class="text-decoration-none">
+          <img [src]="product.img" class="custom-img card-img-top" alt="{{product.name}}" width="250px" height="150px">
+          <div class="card-body p-1">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.price}}</p>
           </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5QCqGP95vAjiyzflPkcUcJeK7VpJ0jdqWTA&usqp=CAU" height="310"  alt="">
-            <div class="card-body">
-              <p class="card-text">God green shirt</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">price</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://cartel.com.co/wp-content/uploads/2023/02/karol-g-1.jpg" alt="" height="310">
-            <div class="card-body">
-              <p class="card-text">Good red shirt</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">price</small>
-              </div>
-            </div>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
+</div>

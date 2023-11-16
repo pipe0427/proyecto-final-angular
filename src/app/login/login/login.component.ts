@@ -21,6 +21,7 @@ export class LoginComponent{
   }
 
   ngOnInit() {
+    
     this.loginForm = this.iniciarFormulario()
   }
 
@@ -38,6 +39,7 @@ export class LoginComponent{
    if (this.loginForm.valid) {
      this.loginService.login(this.loginForm.get("email")?.value,this.loginForm.get("password")?.value).then(response => {
       console.log(response)
+      sessionStorage.setItem("user", this.loginForm.get("email")?.value)
       this.router.navigateByUrl('dashboard')
       SwalUtils.customMessageOk('Bienvenido','login Correcto')   
      }).catch(error => {
