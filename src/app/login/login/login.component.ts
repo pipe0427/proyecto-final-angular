@@ -55,16 +55,16 @@ export class LoginComponent{
 
   }
 
-  loginWithGoogle(){
-    this.loginService.loginWithGoogle().then( response => {
-      console.log(response)
-      this.router.navigateByUrl('dashboard')
-      SwalUtils.customMessageOk('Bienvenido','login Correcto')  
-    }).catch(error => {
-      this.router.navigateByUrl('login')
-      SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
-      console.log(error);
-     })
-  }
+  // loginWithGoogle(){
+  //   this.loginService.loginWithGoogle().then( response => {
+  //     console.log(response)
+  //     this.router.navigateByUrl('dashboard')
+  //     SwalUtils.customMessageOk('Bienvenido','login Correcto')  
+  //   }).catch(error => {
+  //     this.router.navigateByUrl('login')
+  //     SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
+  //     console.log(error);
+  //    })
+  // }
 
 }

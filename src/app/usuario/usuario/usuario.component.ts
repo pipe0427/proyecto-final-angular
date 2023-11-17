@@ -69,13 +69,5 @@ export class UsuarioComponent {
 
  }
 
- logout(){
-  this.loginService.logout().then(resp => {
-    this.router.navigateByUrl('login')
-    SwalUtils.customMessageOk('Logout','Retornara a la pagina de login')
-  }).catch( error => {
-    console.log(error)
-    SwalUtils.customMessageError('Ops! Hubo un error', 'No se pudo cerrar la sesión') 
-  })
- }
+ 
 }

@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
                 <label  class="form-label">Imagen</label>
-                <input type="file" class="form-control" placeholder="Imagen" accept=".png, .jpg, jpeg" formControlName = "img" (change)="uploadImage($event)">
+                <input type="file" class="form-control" placeholder="Imagen" accept=".png, .jpg, .jpeg" formControlName = "img" (change)="uploadImage($event)">
                 <div *ngIf="formulario.get('img')?.touched && formulario.get('img')?.errors?.['required']" class="alert alert-danger mt-2" role="alert">
                 La imagen es requerida
                 </div>

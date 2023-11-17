@@ -19,6 +19,7 @@ import { ListarUsuariosModule } from './listar-usuarios/listar-usuarios.module';
 import { EditarUsuarioModule } from './editar-usuario/editar-usuario.module';
 import { AgregarProductoModule } from './agregar-producto/agregar-producto.module';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { ShirtsModule } from './shirts/shirts.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     ListarUsuariosModule,
     EditarUsuarioModule,
     AgregarProductoModule,
+    ShirtsModule,
     provideFirebaseApp(() => initializeApp({"projectId":"market-50b8a","appId":"1:373680944140:web:305a7454a6db6da3a42a29","storageBucket":"market-50b8a.appspot.com","apiKey":"AIzaSyD5uKUXSUeLFbJ0eXj72jhcFVj3DHjLQyY","authDomain":"market-50b8a.firebaseapp.com","messagingSenderId":"373680944140"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

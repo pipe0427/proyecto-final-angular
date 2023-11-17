@@ -9,12 +9,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./shirts.component.css']
 })
 export class ShirtsComponent {
-  products!:Product[]
+  products:Product[] = []
   camiseta:boolean =false
 
   constructor(
-    private productService:ProductService,
-    private storage:Storage
+    private productService:ProductService
   ){
   }
   ngOnInit(){

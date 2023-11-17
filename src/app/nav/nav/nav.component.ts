@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/login/login.service';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { SwalUtils } from 'src/app/util/swal-utils';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +15,9 @@ export class NavComponent {
   admin!:boolean
   usuarios:Usuario[] = []
 
-  constructor(private usuarioService:UsuarioService) {
+  constructor(private usuarioService:UsuarioService,
+    private loginService:LoginService,
+    private router:Router) {
   }
 
   ngOnInit(){
@@ -38,9 +42,16 @@ export class NavComponent {
       }
       console.log(this.admin);
     })
-    
   }
   
-
+  logout(){
+    this.loginService.logout().then(resp => {
+      this.router.navigateByUrl('login')
+      SwalUtils.customMessageOk('Logout','Retornara a la pagina de login')
+    }).catch( error => {
+      console.log(error)
+      SwalUtils.customMessageError('Ops! Hubo un error', 'No se pudo cerrar la sesión') 
+    })
+   }
   
 }

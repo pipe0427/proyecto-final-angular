@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent{
 
   idProduct: string =""
-  products!:Product[]
+  products:Product[] = []
   
 
   constructor(private route:ActivatedRoute, private productService:ProductService){

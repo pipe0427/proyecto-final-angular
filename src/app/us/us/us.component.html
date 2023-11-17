@@ -1,1 +1,18 @@
-<p>us works!</p>
+<!-- Este componente contiene los llaveros, tiene el nombre de us ya que iba a tener otro poposito pero -->
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-md-6 g-4">
+      <div class="col" *ngFor="let product of products" >
+        <div class="card card-1 shadow h-100" height="310" width="310">
+          <a routerLink="../main/product/{{product.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+            class="text-decoration-none">
+            <img [src]="product.img" class="custom-img card-img-top" alt="{{product.name}}" width="250px" height="150px">
+            <div class="card-body p-1">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.price}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,40 +1,17 @@
-<div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-            <div class="card shadow-sm">
-              <img src="https://copiweb.com/523-thickbox_default/bolsos-de-tela-personalizados.jpg" alt="" height="310">
-              <div class="card-body">
-                <p class="card-text">Hand bag personalized</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">price</small>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card shadow-sm">
-              <img src="https://r.rp-static.com/r/catalog/public/e69cba9eb7d8c00e3683d9fda206df093903895b/780/bolso-shopper-personalizado.jpg?lang=es&v=2023-04-12T09:31:07+02:00" alt="" height="310">
-              <div class="card-body">
-                <p class="card-text">Hand bag personalized</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">price</small>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card shadow-sm">
-              <img src="https://cdn.wallapop.com/images/10420/ex/qi/__/c10420p903191269/i3291464799.jpg?pictureSize=W640" alt="" height="310">
-              <div class="card-body">
-                <p class="card-text">Hand bag personalized</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">price</small>
-                </div>
-              </div>
-            </div>
-        </div>
+<div class="container">
+  <div class="row row-cols-2 row-cols-md-6 g-4">
+    <div class="col" *ngFor="let product of products" >
+      <div class="card card-1 shadow h-100" height="310" width="310">
+        <a routerLink="../main/product/{{product.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+          class="text-decoration-none">
+          <img [src]="product.img" class="custom-img card-img-top" alt="{{product.name}}" width="250px" height="150px">
+          <div class="card-body p-1">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.descripcion}}</p>
+            <p class="card-text">{{product.price}}</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
+</div>
