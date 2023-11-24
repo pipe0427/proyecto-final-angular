@@ -86,5 +86,8 @@ llenarCamposUsuario(){
           ciudad: [usuario.ciudad, [Validators.required,Validators.minLength(3)]]
       })
     }
- 
+
+    editarUsuario(){
+
+    }
 }

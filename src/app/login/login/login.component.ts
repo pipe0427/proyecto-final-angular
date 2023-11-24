@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { SwalUtils } from 'src/app/util/swal-utils';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -67,4 +68,5 @@ export class LoginComponent{
   //    })
   // }
 
+  
 }

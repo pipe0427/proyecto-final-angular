@@ -22,7 +22,8 @@ const routes: Routes = [
       {path: 'listar', loadChildren: () => import('./listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosModule)},
       {path: 'editar', loadChildren: () => import('./editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioModule)},
       {path: 'agregar-producto', loadChildren: () => import('./agregar-producto/agregar-producto.module').then(m => m.AgregarProductoModule)}
-    ]}
+    ]},
+    {path: 'recuperar-contrasena', loadChildren: () => import('./recuperar-contrasena/recuperar-contrasena.module').then(m=>m.RecuperarContrasenaModule)}
 ];
 
 @NgModule({

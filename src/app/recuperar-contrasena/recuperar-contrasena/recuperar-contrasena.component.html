@@ -1,0 +1,22 @@
+<img src="https://cdn-icons-png.flaticon.com/512/8653/8653323.png" class="rounded mx-auto d-block" alt="" height="200">
+<div class="container">
+    <div class="container border border-warning rounded-4 " >
+        <form (ngSubmit)="onLogin()" [formGroup] = 'form'>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="text" 
+                formControlName = "email"
+                class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <div *ngIf="form.get('email')?.touched
+                                        && form.get('email')?.errors?.['required']" class="alert alert-danger mt-2"
+                    role="alert">
+                    El eamil es requerido
+                </div>
+            </div>
+            
+            <div class=" d-grid gap-2 d-md-flex justify-content-md-center">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
